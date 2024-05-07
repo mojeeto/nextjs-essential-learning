@@ -1,21 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;700&display=swap");
 
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: "Quicksand", sans-serif;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  body {
-    @apply m-0 bg-gradient-radial from-[#282c34] to-[#282c34];
-  }
+html {
+  font-family: "Quicksand", sans-serif;
+}
 
-  svg {
-    @apply block h-auto w-full;
-  }
+body {
+  margin: 0;
+  background: radial-gradient(#282c34, #282c34);
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @layer components {
