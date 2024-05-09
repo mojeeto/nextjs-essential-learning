@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Logo from "../logo";
 import styles from "./main-header.module.css";
 import MainHeaderBackground from "./main-header-background";
+import NavLink from "./nav-link";
 
 const MainHeader: React.FC = () => {
   return (
@@ -12,10 +12,10 @@ const MainHeader: React.FC = () => {
         <nav className={styles.nav}>
           <ul>
             <li>
-              <Link href="/meals">Browse Meals</Link>
+              <NavLink href="/meals">Browse Meals</NavLink>
             </li>
             <li>
-              <Link href="/community">Foodies Commmunity</Link>
+              <NavLink href="/community">Foodies Commmunity</NavLink>
             </li>
           </ul>
         </nav>
