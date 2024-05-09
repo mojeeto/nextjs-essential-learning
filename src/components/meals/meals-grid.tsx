@@ -16,9 +16,9 @@ interface MealsGridProps {
 
 const MealsGrid: React.FC<MealsGridProps> = ({ meals }) => {
   return (
-    <ul>
+    <ul className={classes.meals}>
       {meals.map((meal) => (
-        <li key={meal.id} className={classes.meals}>
+        <li key={meal.id}>
           <MealItem {...meal} />
         </li>
       ))}
