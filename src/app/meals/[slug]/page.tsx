@@ -2,6 +2,7 @@ import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
 import Image from "next/image";
 import { MealItemType } from "@/components/meals/meals-grid";
+import { notFound } from "next/navigation";
 
 export default function MealDeatilsPage({
   params,
@@ -9,6 +10,9 @@ export default function MealDeatilsPage({
   params: { slug: string };
 }) {
   const meal = getMeal(params.slug) as MealItemType;
+  if (!meal) {
+    return notFound();
+  }
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
   return (
     <>
