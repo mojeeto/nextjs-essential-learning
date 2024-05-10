@@ -7,3 +7,7 @@ export async function getMeals() {
   // throw new Error("Some went wronge!");
   return db.prepare("SELECT * FROM meals").all(); // return all rows
 }
+
+export function getMeal(slug: string) {
+  return db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug);
+}
