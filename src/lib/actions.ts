@@ -2,8 +2,9 @@
 
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
-function IsInputTextValid(text: string) {
+function isInputInvalid(text: string) {
   return !text || text.length !== 0;
 }
 
@@ -22,14 +23,11 @@ export async function shareMeal(
   };
 
   if (
-    IsInputTextValid(meal.title) ||
-    IsInputTextValid(meal.creator) ||
-    IsInputTextValid(meal.summary) ||
-    IsInputTextValid(meal.instructions) ||
-    IsInputTextValid(meal.creator_email) ||
-    meal.creator_email.includes("@") ||
-    !image ||
-    image.size !== 0
+    !isInputInvalid(meal.title) ||
+    !isInputInvalid(meal.creator) ||
+    !isInputInvalid(meal.summary) ||
+    !isInputInvalid(meal.instructions) ||
+    !isInputInvalid(meal.creator_email)
   ) {
     return {
       message: "Invliad input!",
@@ -37,6 +35,6 @@ export async function shareMeal(
   }
 
   await saveMeal(meal);
-
+  revalidatePath("/meals");
   return redirect("/meals");
 }
